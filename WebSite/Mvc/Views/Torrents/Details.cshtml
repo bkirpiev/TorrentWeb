@@ -1,0 +1,40 @@
+﻿@using Telerik.Sitefinity.DynamicModules.Model
+@using Telerik.Sitefinity.Libraries.Model;
+@using Telerik.Sitefinity.Model
+@model DynamicContent
+
+
+<h1 class="border-bottom">
+    Details
+</h1>
+
+<div class="card mt-5">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-8 col-lg-10">
+                <h3 class="card-title">@Html.Raw(Model.GetString("Title"))</h3>
+            </div>
+            <div class="col-4 col-lg-2">
+                @Html.ActionLink("Download", "DownloadTorrent", "Torrents", new { fileId = Model.GetValue<Document>("File").Id }, new { @class= "btn btn-success" })
+            </div>
+        </div>
+        <img class="card-img-bottom rounded mt-5 mb-5" src="@(Model.GetValue<Image>("Image").Url)" alt="Card image cap">
+
+        <h6><strong>Description:</strong></h6>
+        <p class="card-text">@Html.Raw(Model.GetString("Description"))</p>
+
+        <h6><strong>Additional Info:</strong></h6>
+        <p class="card-text">@Html.Raw(Model.GetString("AdditionalInfo"))</p>
+
+        <h6><strong>Genre:</strong></h6>
+        <p class="card-text">@Html.Raw(Model.GetValue("Genre").ToString())</p>
+
+        <div class="float-right">
+            <p class="card-text"><small class="text-muted">Created On: @Html.Raw(Model.GetValue("CreatedOn"))</small></p>
+        </div>
+    </div>
+</div>
+
+
+
+
